@@ -19,7 +19,7 @@ export function Hero() {
         {/* Name & Title */}
         <div className="space-y-4">
           <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight">
-            <span className="gradient-text">Eswar Chinthakayala</span>
+            <span className="gradient-text">Eswar</span>
           </h1>
           <p className="text-2xl md:text-3xl font-semibold text-primary">
             Full Stack Developer
