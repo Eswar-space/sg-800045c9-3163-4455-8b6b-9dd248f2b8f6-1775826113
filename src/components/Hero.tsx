@@ -70,7 +70,7 @@ export function Hero() {
             size="icon" 
             variant="ghost" 
             className="glass glass-hover rounded-full"
-            onClick={scrollToContact}
+            onClick={}
           >
             <Mail className="w-5 h-5" />
           </Button>
