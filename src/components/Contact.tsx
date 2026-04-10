@@ -179,6 +179,13 @@ export function Contact() {
                     <span>eswarchinthakayala@gmail.com</span>
                   </div>
                 </div>
+
+                 <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <Mail className="w-5 h-5 text-primary" />
+                    <span>7416827047</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
