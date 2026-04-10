@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Mail, Send, CheckCircle, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Send, CheckCircle, Linkedin, Twitter } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -12,14 +13,47 @@ export function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: "", email: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    setLoading(true);
+    setError("");
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setError("Email service not configured. Please check your environment variables.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setFormData({ name: "", email: "", message: "" });
+        setSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      setError("Failed to send message. Please try again or email me directly.");
+      console.error("EmailJS Error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (
@@ -60,6 +94,7 @@ export function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      disabled={loading}
                       className="glass border-white/10 focus:border-primary transition-colors"
                     />
                   </div>
@@ -71,6 +106,7 @@ export function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      disabled={loading}
                       className="glass border-white/10 focus:border-primary transition-colors"
                     />
                   </div>
@@ -81,13 +117,30 @@ export function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      disabled={loading}
                       rows={5}
                       className="glass border-white/10 focus:border-primary transition-colors resize-none"
                     />
                   </div>
-                  <Button type="submit" className="w-full gap-2 glow group">
-                    <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    Send Message
+                  {error && (
+                    <p className="text-sm text-destructive">{error}</p>
+                  )}
+                  <Button 
+                    type="submit" 
+                    className="w-full gap-2 glow group" 
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               ) : (
