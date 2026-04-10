@@ -3,19 +3,51 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const skillCategories = [
   {
-    title: "Frontend",
-    skills: ["Next.js", "Node.js", "Tailwind CSS", "HTML", "CSS", "Bootstrap"],
+    title: "Frontend Technologies",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Vite",
+      "Tailwind CSS",
+      "Angular",
+      "Vue",
+    ],
     icon: "🎨",
   },
   {
-    title: "Backend",
-    skills: ["Python", "PHP", "Go"],
+    title: "Backend Technologies",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "Python",
+      "FastAPI",
+      "Django",
+      "Go",
+      "Java",
+      "Spring Boot",
+      "PHP",
+    ],
     icon: "⚙️",
   },
   {
-    title: "Databases",
-    skills: ["PostgreSQL", "MySQL", "MongoDB"],
+    title: "Databases & Caching",
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
     icon: "💾",
+  },
+  {
+    title: "DevOps & Infrastructure",
+    skills: ["Docker", "Kubernetes"],
+    icon: "🚀",
+  },
+  {
+    title: "Mobile Development",
+    skills: ["Flutter", "React Native", "Kotlin", "Android Studio"],
+    icon: "📱",
   },
   {
     title: "Design",
@@ -33,16 +65,16 @@ export function Skills() {
             Technical Skills
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Diverse expertise across modern web technologies and frameworks
+            Comprehensive expertise across modern web, backend, mobile, and infrastructure technologies
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
             <Card key={category.title} className="border-2 hover:border-primary/50 transition-colors">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 font-heading text-2xl">
-                  <span className="text-3xl">{category.icon}</span>
+                <CardTitle className="flex items-center gap-3 font-heading text-xl">
+                  <span className="text-2xl">{category.icon}</span>
                   {category.title}
                 </CardTitle>
               </CardHeader>
