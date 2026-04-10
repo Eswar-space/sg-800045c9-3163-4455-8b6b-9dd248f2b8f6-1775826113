@@ -43,6 +43,16 @@ export function Hero() {
             Get in Touch
           </Button>
         </div>
+        <div className="flex items-center justify-center pt-8">
+          <Button 
+            size="lg" 
+            className="gap-2 glow group"
+            onClick={scrollToContact}
+          >
+            <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+            Call: 7416827047
+          </Button>
+        </div>
 
         {/* Social Links */}
         <div className="flex items-center justify-center gap-4 pt-4">
