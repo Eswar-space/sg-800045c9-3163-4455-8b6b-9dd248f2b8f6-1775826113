@@ -123,7 +123,7 @@ export function Contact() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-muted-foreground">
                     <Mail className="w-5 h-5 text-primary" />
-                    <span>eswar@example.com</span>
+                    <span>eswarchinthakayala@gmail.com</span>
                   </div>
                 </div>
               </CardContent>
@@ -139,17 +139,7 @@ export function Contact() {
                     className="glass glass-hover glow rounded-full"
                     asChild
                   >
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                      <Github className="w-5 h-5" />
-                    </a>
-                  </Button>
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="glass glass-hover glow rounded-full"
-                    asChild
-                  >
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/ceswar/" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="w-5 h-5" />
                     </a>
                   </Button>

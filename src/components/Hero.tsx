@@ -1,6 +1,5 @@
-import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export function Hero() {
   const scrollToContact = () => {
@@ -17,18 +16,6 @@ export function Hero() {
       </div>
 
       <div className="relative max-w-5xl mx-auto text-center space-y-8 animate-slide-up">
-        {/* Profile Photo */}
-        <div className="flex justify-center mb-8">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-xl opacity-50 animate-pulse" />
-            <Avatar className="relative w-32 h-32 border-4 border-primary/50 glow">
-              <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-4xl font-bold">
-                EC
-              </AvatarFallback>
-            </Avatar>
-          </div>
-        </div>
-
         {/* Name & Title */}
         <div className="space-y-4">
           <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight">
@@ -45,8 +32,8 @@ export function Hero() {
           Specialized in building scalable applications from concept to deployment.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+        {/* CTA Button */}
+        <div className="flex items-center justify-center pt-8">
           <Button 
             size="lg" 
             className="gap-2 glow group"
@@ -54,14 +41,6 @@ export function Hero() {
           >
             <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
             Get in Touch
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="gap-2 glass glass-hover"
-          >
-            <Download className="w-5 h-5" />
-            Download CV
           </Button>
         </div>
 
@@ -73,17 +52,7 @@ export function Hero() {
             className="glass glass-hover rounded-full"
             asChild
           >
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <Github className="w-5 h-5" />
-            </a>
-          </Button>
-          <Button 
-            size="icon" 
-            variant="ghost" 
-            className="glass glass-hover rounded-full"
-            asChild
-          >
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/ceswar/" target="_blank" rel="noopener noreferrer">
               <Linkedin className="w-5 h-5" />
             </a>
           </Button>

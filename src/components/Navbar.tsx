@@ -49,12 +49,6 @@ export function Navbar() {
           >
             Projects
           </button>
-          <button
-            onClick={() => scrollToSection("experience")}
-            className="text-sm font-medium hover:text-primary transition-colors"
-          >
-            Experience
-          </button>
           <Button
             onClick={() => scrollToSection("contact")}
             size="sm"
