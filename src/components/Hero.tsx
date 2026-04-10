@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -7,7 +7,10 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden"
+    >
       {/* Animated Gradient Mesh Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-pulse" />
@@ -28,51 +31,64 @@ export function Hero() {
 
         {/* Tagline */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Crafting exceptional web experiences with modern technologies. 
+          Crafting exceptional web experiences with modern technologies.
           Specialized in building scalable applications from concept to deployment.
         </p>
 
-        {/* CTA Button */}
-        <div className="flex items-center justify-center pt-8">
-          <Button 
-            size="lg" 
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+          <Button
+            size="lg"
             className="gap-2 glow group"
             onClick={scrollToContact}
           >
             <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
             Get in Touch
           </Button>
-        </div>
-        <div className="flex items-center justify-center pt-8">
-          <Button 
-            size="lg" 
-            className="gap-2 glow group"
-            onClick={scrollToContact}
-          >
-            <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            Call: 7416827047
+
+          <Button size="lg" className="gap-2 glow group" asChild>
+            <a href="tel:+917416827047">
+              <Phone className="w-5 h-5" />
+              Call: 7416827047
+            </a>
           </Button>
         </div>
 
         {/* Social Links */}
         <div className="flex items-center justify-center gap-4 pt-4">
-          <Button 
-            size="icon" 
-            variant="ghost" 
+          <Button
+            size="icon"
+            variant="ghost"
             className="glass glass-hover rounded-full"
             asChild
           >
-            <a href="https://www.linkedin.com/in/ceswar/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/ceswar/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Linkedin className="w-5 h-5" />
             </a>
           </Button>
-          <Button 
-            size="icon" 
-            variant="ghost" 
+
+          <Button
+            size="icon"
+            variant="ghost"
             className="glass glass-hover rounded-full"
-            onClick={}
+            onClick={scrollToContact}
           >
             <Mail className="w-5 h-5" />
+          </Button>
+
+          <Button
+            size="icon"
+            variant="ghost"
+            className="glass glass-hover rounded-full"
+            asChild
+          >
+            <a href="tel:+917416827047">
+              <Phone className="w-5 h-5" />
+            </a>
           </Button>
         </div>
       </div>
