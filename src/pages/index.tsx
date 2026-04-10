@@ -1,19 +1,29 @@
 import { SEO } from "@/components/SEO";
+import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
+import { Projects } from "@/components/Projects";
+import { Experience } from "@/components/Experience";
+import { Achievements } from "@/components/Achievements";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <SEO
+      <SEO 
         title="Eswar Chinthakayala - Full Stack Developer"
-        description="Full Stack Developer specializing in React, Next.js, Node.js, Python, and modern web technologies."
+        description="Full-stack developer specializing in modern web technologies. Building scalable applications with React, Next.js, Python, and more."
       />
+      <Navbar />
       <main className="min-h-screen">
         <Hero />
+        <About />
         <Skills />
+        <Projects />
+        <Experience />
+        <Achievements />
         <Contact />
         <Footer />
       </main>

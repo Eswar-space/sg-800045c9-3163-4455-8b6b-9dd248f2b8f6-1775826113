@@ -1,108 +1,173 @@
 import { useState } from "react";
-import { Mail, Send, CheckCircle } from "lucide-react";
+import { Mail, Send, CheckCircle, Github, Linkedin, Twitter } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
 
 export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     setSubmitted(true);
     setTimeout(() => {
-      setSubmitted(false);
       setFormData({ name: "", email: "", message: "" });
+      setSubmitted(false);
     }, 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            <Mail className="w-4 h-4" />
+    <section id="contact" className="py-24 px-4">
+      <div className="max-w-5xl mx-auto space-y-16">
+        {/* Section Header */}
+        <div className="text-center space-y-4 animate-slide-up">
+          <h2 className="font-heading text-5xl md:text-6xl font-bold gradient-text">
             Get In Touch
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Work Together</h2>
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Send me a message and I'll get back to you soon.
+            Have a project in mind? Let's work together
           </p>
         </div>
 
-        <Card className="border-2 shadow-xl">
-          <CardContent className="p-8">
-            {submitted ? (
-              <div className="text-center py-12">
-                <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                <p className="text-muted-foreground">Thanks for reaching out. I'll get back to you soon.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Contact Form */}
+          <Card className="glass glass-hover glow">
+            <CardHeader>
+              <CardTitle className="font-heading text-2xl flex items-center gap-3">
+                <Mail className="w-6 h-6 text-primary" />
+                Send a Message
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {!submitted ? (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
                     <Input
-                      id="name"
                       name="name"
+                      placeholder="Your Name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Your name"
                       required
-                      className="h-12"
+                      className="glass border-white/10 focus:border-primary transition-colors"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                  <div>
                     <Input
-                      id="email"
-                      name="email"
                       type="email"
+                      name="email"
+                      placeholder="Your Email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="your.email@example.com"
                       required
-                      className="h-12"
+                      className="glass border-white/10 focus:border-primary transition-colors"
                     />
                   </div>
+                  <div>
+                    <Textarea
+                      name="message"
+                      placeholder="Your Message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      className="glass border-white/10 focus:border-primary transition-colors resize-none"
+                    />
+                  </div>
+                  <Button type="submit" className="w-full gap-2 glow group">
+                    <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    Send Message
+                  </Button>
+                </form>
+              ) : (
+                <div className="py-12 text-center space-y-4 animate-slide-up">
+                  <div className="inline-flex p-4 rounded-full bg-primary/10 glow">
+                    <CheckCircle className="w-12 h-12 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-xl font-bold mb-2">
+                      Message Sent!
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Thank you for reaching out. I'll get back to you soon.
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell me about your project..."
-                    required
-                    rows={6}
-                    className="resize-none"
-                  />
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Contact Info & Social */}
+          <div className="space-y-6">
+            <Card className="glass glass-hover glow">
+              <CardContent className="p-8 space-y-6">
+                <h3 className="font-heading text-2xl font-bold gradient-text">
+                  Let's Connect
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  I'm always interested in hearing about new projects and opportunities. 
+                  Whether you have a question or just want to say hi, feel free to reach out!
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <Mail className="w-5 h-5 text-primary" />
+                    <span>eswar@example.com</span>
+                  </div>
                 </div>
-                <Button type="submit" size="lg" className="w-full md:w-auto">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </Button>
-              </form>
-            )}
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
+
+            <Card className="glass glass-hover glow">
+              <CardContent className="p-8 space-y-4">
+                <h3 className="font-heading text-xl font-bold">Follow Me</h3>
+                <div className="flex gap-3">
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    className="glass glass-hover glow rounded-full"
+                    asChild
+                  >
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-5 h-5" />
+                    </a>
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    className="glass glass-hover glow rounded-full"
+                    asChild
+                  >
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    className="glass glass-hover glow rounded-full"
+                    asChild
+                  >
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                      <Twitter className="w-5 h-5" />
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </section>
   );
